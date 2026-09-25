@@ -1,398 +1,416 @@
-# Smart Kisaan — AI-Powered Farmer Assistance Platform
+# 🌾 Smart Kisaan
 
-A complete production-style full-stack web application for Indian smallholder farmers.
+## AI-Powered Smart Farming Assistance Platform
 
----
+**Smart Kisaan** is an AI-powered smart farming assistance platform designed to provide farmers with useful agricultural information and assistance through a simple and user-friendly web application.
 
-## Project overview
-
-Smart Kisaan is a digital farming platform covering the full farmer journey:
-registration → profile → weather → crop & fertilizer recommendations → disease detection → profit calculator → farm plan → market prices → AI assistant → community → marketplace → government schemes → video library.
-
-All 12 phases are complete (Phases 1–11 fully implemented and tested; Phase 12 is this final integration + README).
+The platform brings together farming assistance, market information, weather information, community interaction, educational videos, account management, and AI/ML-based features in one application.
 
 ---
 
-## Tech stack
+## ✨ Key Features
 
-| Layer | Technology |
-|---|---|
-| Frontend | React 18, Vite, Tailwind CSS, React Router, Axios, Recharts |
-| Backend | Python, Django 5, Django REST Framework, SimpleJWT |
-| Database | SQLite (dev) → swappable to MySQL via `.env` (no code change) |
-| ML | `ml_models/` package — rule-based predictors (crop, fertilizer); `DiseaseDetectionPredictor` stub awaiting trained model |
-| Auth | JWT (access 30min, refresh 7 days, blacklisted on logout) |
-| Voice | Web Speech API (browser-native, English + Telugu) |
-
----
-
-## Architecture
-
-```
-Browser (React SPA)
-  │  Axios + JWT interceptors (auto-refresh on 401)
-  ▼
-Django REST Framework  /api/...
-  │
-  ├── accounts      — User, JWT auth, password reset
-  ├── farmers       — FarmerProfile (1:1 with User)
-  ├── weather       — WeatherRecord, MockProvider / OpenWeatherMap
-  ├── activities    — FarmActivity (sowing/irrigation/fertilizer/etc.)
-  ├── reminders     — Reminder, NotificationPreference
-  ├── crops         — Crop catalog, CropRecommendation
-  ├── fertilizers   — Fertilizer catalog, FertilizerRecommendation
-  ├── market        — MarketPrice (history + trend)
-  ├── profit        — ProfitCalculation
-  ├── diseases      — Disease catalog, DiseaseDetection
-  ├── ai_assistant  — ChatMessage, RuleBasedFAQProvider / LLMProvider
-  ├── farm_plan     — CropCalendarStage, FarmPlan, FarmPlanTask
-  ├── schemes       — GovernmentScheme
-  ├── videos        — Video, VideoFavorite, VideoWatchHistory
-  ├── marketplace   — Product, Wishlist
-  ├── community     — CommunityPost, Comment, PostLike, PostReport
-  └── analytics     — admin-only aggregates (no separate model)
-  │
-  ▼
-SQLite (dev) / MySQL (prod — same Django ORM models)
-
-ml_models/  (sibling of backend/, not a Django app)
-  ├── common/              — BasePredictor, PredictionResult
-  ├── crop_recommendation/ — CropRecommendationPredictor (rule-based v1)
-  ├── fertilizer_recommendation/ — FertilizerRecommendationPredictor (rule-based v1)
-  └── disease_detection/   — DiseaseDetectionPredictor (stub — awaits trained model)
-```
+- 🌱 **Farming Assistance**
+- 📊 **Market Data**
+- 🌦️ **Weather Information**
+- 👤 **Account Management**
+- 👥 **Farmer Community**
+- 🎥 **Agricultural Videos**
+- ✅ **Verified Information**
+- 🤖 **AI-Based Assistance**
+- 🦠 **Disease Detection**
+- 🌾 **Crop Recommendations**
+- 📊 **User Dashboard**
+- 🔐 **User Authentication**
 
 ---
 
-## Folder structure
+# 🛠️ Technologies Used
 
-```
-smart-kisaan/
+### Frontend
+- React.js
+- JavaScript
+- HTML
+- CSS
+
+### Backend
+- Python
+- Django
+- Django REST Framework
+
+### Database
+- SQLite
+
+### AI / Machine Learning
+- Python
+- Machine Learning
+- AI-based agricultural assistance
+
+### Tools
+- Git
+- GitHub
+- REST APIs
+- VS Code
+
+---
+
+# 📂 Project Structure
+
+```text
+SmartKisaan/
+│
 ├── backend/
-│   ├── manage.py
-│   ├── requirements.txt
-│   ├── .env.example
-│   ├── config/
-│   │   ├── settings.py
-│   │   ├── urls.py
-│   │   ├── exception_handler.py   ← consistent {error, detail, code} API errors
-│   │   ├── wsgi.py
-│   │   └── asgi.py
-│   └── apps/
-│       └── <16 apps, each with models/serializers/views/urls/admin>
+│
 ├── frontend/
-│   ├── package.json
-│   └── src/
-│       ├── services/      ← one module per API domain
-│       ├── context/       ← AuthContext, ToastContext
-│       ├── components/    ← Card, DashboardLayout, ErrorBoundary, StateComponents, ...
-│       ├── hooks/         ← useVoice, useApi
-│       └── pages/         ← 19 pages
-└── ml_models/
-    ├── common/
-    ├── crop_recommendation/
-    ├── fertilizer_recommendation/
-    └── disease_detection/
+│
+├── ml_models/
+│
+├── ScreenshotsP/
+│   ├── home.png
+│   ├── market-data.png
+│   ├── account.png
+│   ├── community.png
+│   ├── videos.png
+│   ├── verified.png
+│   ├── weather.png
+│   ├── dashboard.png
+│   ├── crop-recommendation.png
+│   └── disease-detection.png
+│
+├── README.md
+│
+└── .gitignore
 ```
 
 ---
 
-## Installation
+# 📸 Application Screenshots
 
-### Prerequisites
-- Python 3.10+
-- Node.js 18+
-- npm
+## 🏠 Home
 
-### Backend setup
+The Smart Kisaan home interface provides access to the major farming-related services available in the platform.
+
+![Smart Kisaan Home](ScreenshotsP/LoginLight.png)
+
+---
+
+## 📊 Market Data
+
+The Market Data section provides users with access to agricultural market-related information.
+
+![Market Data](ScreenshotsP/MarketData.png)
+
+---
+
+## 👤 Account
+
+The Account section allows users to manage and access their account-related information.
+
+![Account](ScreenshotsP/account.png)
+
+---
+
+## 👥 Community
+
+The Community section provides a space for users to interact and access community-oriented agricultural information.
+
+![Community](ScreenshotsP/community.png)
+
+---
+
+## 🎥 Videos
+
+The Videos section provides agricultural and farming-related video content.
+
+![Videos](ScreenshotsP/videos.png)
+
+---
+
+## ✅ Verified Information
+
+The Verified section presents verified agricultural information available within the application.
+
+![Verified Information](ScreenshotsP/verified.png)
+
+---
+
+## 🌦️ Weather
+
+The Weather section provides weather-related information useful for farming activities.
+
+![Weather](ScreenshotsP/weather.png)
+
+---
+
+## 📊 Dashboard
+
+The dashboard provides access to the main Smart Kisaan services and features.
+
+![Dashboard](ScreenshotsP/Dashboard.png)
+
+---
+
+## 🌱 Market Places
+
+The crop recommendation functionality provides farming-related recommendations based on the available application functionality.
+
+![Crop Recommendation](ScreenshotsP/MarketData.png)
+
+---
+
+## 🦠 Disease Detection
+
+The disease detection functionality supports identification of plant-related disease conditions using the implemented AI/ML functionality.
+
+![Disease Detection](ScreenshotsP/Disease.png)
+
+---
+
+# 🎥 Project Demo
+
+## ▶️ Smart Kisaan Demo Video
+
+The complete project demonstration shows the major features and workflow of the Smart Kisaan platform.
+
+### 🎬 Watch the Demo
+
+**[▶️ Click Here to Watch Smart Kisaan Demo](YOUR_VIDEO_LINK_HERE)**
+
+> The demo video is hosted externally instead of being stored directly in the repository because GitHub limits individual repository files to 100 MB.
+
+---
+
+# 🚀 Main Modules
+
+### 🌱 Farming Assistance
+
+Provides users with farming-related assistance through the application.
+
+### 📊 Market Data
+
+Provides agricultural market-related information.
+
+### 🌦️ Weather
+
+Provides weather-related information for farming use.
+
+### 👥 Community
+
+Provides community-oriented interaction and information sharing.
+
+### 🎥 Videos
+
+Provides farming-related educational video content.
+
+### ✅ Verified
+
+Provides verified agricultural information.
+
+### 👤 Account
+
+Provides user account-related functionality.
+
+### 🤖 AI / ML
+
+Provides AI/ML-powered functionality implemented within the project.
+
+---
+
+# ⚙️ Installation & Setup
+
+## 1. Clone the Repository
 
 ```bash
-cd smart-kisaan/backend
-
-# Create and activate virtual environment
-python -m venv venv
-source venv/bin/activate        # Mac/Linux
-# venv\Scripts\activate         # Windows
-
-pip install -r requirements.txt
-
-cp .env.example .env
-# Edit .env — at minimum, change DJANGO_SECRET_KEY
+git clone https://github.com/ankithakanneboina/Smartkisaan-2.git
 ```
 
-### Frontend setup
-
 ```bash
-cd smart-kisaan/frontend
-npm install
+cd Smartkisaan-2
 ```
 
 ---
 
-## Database migration
+# 🔧 Backend Setup
 
-```bash
+Open a terminal:
+
+```powershell
 cd backend
-python manage.py makemigrations
+```
+
+Create a virtual environment:
+
+```powershell
+python -m venv venv
+```
+
+Activate it:
+
+```powershell
+venv\Scripts\activate
+```
+
+Install dependencies:
+
+```powershell
+pip install -r requirements.txt
+```
+
+Run migrations:
+
+```powershell
 python manage.py migrate
 ```
 
----
+Start the backend:
 
-## Seed demo data
-
-Run each command once after migrating. All are safe to re-run (`update_or_create`):
-
-```bash
-python manage.py seed_demo_data        # 7 crops + 3 fertilizers
-python manage.py seed_market_data      # 14 days price history across 9 crop+market pairs
-python manage.py seed_disease_data     # 4 crop disease reference entries
-python manage.py seed_crop_calendar    # 7 lifecycle stages × 7 crops = 49 rows
-python manage.py seed_video_data       # 5 demo video entries (PLACEHOLDER URLs — replace via /admin/)
-python manage.py seed_marketplace_data # 5 demo products (fictional — replace via /admin/)
+```powershell
+python manage.py runserver
 ```
 
-**Government schemes have no seed command** — per spec §15 ("Do not invent government scheme information"), add real scheme data via `/admin/` from an official source (e.g. myscheme.gov.in).
+Backend:
 
-### Create a superuser (for /admin/ and analytics page)
-
-```bash
-python manage.py createsuperuser
+```text
+http://127.0.0.1:8000/
 ```
 
 ---
 
-## Run the application
+# 💻 Frontend Setup
 
-Open **two terminals**:
+Open another terminal:
 
-```bash
-# Terminal 1 — backend
-cd backend && python manage.py runserver
-
-# Terminal 2 — frontend
-cd frontend && npm run dev
+```powershell
+cd frontend
 ```
 
-- Frontend: http://localhost:5173
-- Backend API: http://127.0.0.1:8000/api/
-- Django admin: http://127.0.0.1:8000/admin/
+Install dependencies:
 
-Vite proxies `/api` to `http://127.0.0.1:8000` in dev — no CORS issues.
+```powershell
+npm install
+```
 
----
+Start the frontend:
 
-## Environment variables
+```powershell
+npm run dev
+```
 
-See `.env.example` for the full annotated list. Key variables:
+Frontend:
 
-| Variable | Default | Effect when blank |
-|---|---|---|
-| `DJANGO_SECRET_KEY` | `change-me` | **Change this before production** |
-| `DJANGO_DEBUG` | `True` | Set `False` in production — activates security headers |
-| `WEATHER_API_KEY` | _(blank)_ | Uses `MockWeatherProvider` — labeled "sample data" in UI |
-| `AI_API_KEY` | _(blank)_ | Uses `RuleBasedFAQProvider` — 6 farming topics, EN + TE |
-| `DB_ENGINE` | `sqlite3` | Fill in `mysql` + all `DB_*` vars to switch to MySQL |
-
----
-
-## API endpoints (complete reference)
-
-### Auth  `/api/auth/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| POST | `register/` | public | Returns user + JWT pair |
-| POST | `login/` | public | Email + password → JWT pair |
-| POST | `refresh/` | public | Refresh access token |
-| POST | `logout/` | ✓ | Blacklists refresh token |
-| GET/PATCH | `me/` | ✓ | Own account |
-| POST | `password-reset/` | public | Issues uid+token |
-| POST | `password-reset-confirm/` | public | Sets new password |
-
-### Farmers  `/api/farmers/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| GET/PATCH | `me/` | ✓ | Own farmer profile (multipart for photo) |
-
-### Weather  `/api/weather/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| GET | `current/?location=` | ✓ | Current + 7-day forecast + alerts |
-
-### Farm Activities  `/api/farm-activities/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| GET/POST | `` | ✓ | List/create own activities |
-| GET/PATCH/DELETE | `<id>/` | ✓ | Single activity |
-| GET | `recent/` | ✓ | Last 5 (dashboard card) |
-
-### Reminders  `/api/reminders/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| GET/POST | `` | ✓ | List/create (respects preferences) |
-| GET/PATCH/DELETE | `<id>/` | ✓ | Single reminder |
-| GET | `upcoming/` | ✓ | Next 5 not-done (dashboard) |
-| GET/PATCH | `preferences/` | ✓ | Notification type toggles |
-
-### Crops  `/api/crops/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| GET | `` | ✓ | Crop catalog |
-| POST | `recommend/` | ✓ | Rule-based crop recommendation |
-| GET | `recommendations/` | ✓ | Own recommendation history |
-
-### Fertilizers  `/api/fertilizers/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| GET | `` | ✓ | Fertilizer catalog |
-| POST | `recommend/` | ✓ | Rule-based fertilizer recommendation |
-| GET | `recommendations/` | ✓ | Own recommendation history |
-
-### Market  `/api/market/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| GET | `prices/?crop=&market=&sort=` | ✓ | Latest price per crop+market pair |
-| GET | `prices/trend/?crop=&market=` | ✓ | Historical price series (labeled as history, not prediction) |
-
-### Profit  `/api/profit/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| POST | `calculate/` | ✓ | Compute + save profit calculation |
-| GET | `history/` | ✓ | Own calculation history |
-
-### Diseases  `/api/diseases/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| GET | `` | ✓ | Disease reference catalog |
-| POST | `detect/` | ✓ | Upload image — returns `status: unavailable` until model trained |
-| GET | `history/` | ✓ | Own detection history |
-
-### AI Assistant  `/api/ai/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| POST | `chat/` | ✓ | Send message, get structured response |
-| GET | `history/` | ✓ | Full chat thread |
-
-### Farm Plan  `/api/farm-plan/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| GET | `calendar/?crop=` | ✓ | Lifecycle stages for a crop |
-| POST | `generate/` | ✓ | Generate personalized plan + tasks + reminders |
-| GET | `plans/` | ✓ | Own saved plans |
-| GET/PATCH/DELETE | `plans/<id>/` | ✓ | Single plan |
-| GET/PATCH/DELETE | `tasks/<id>/` | ✓ | Single task (check off) |
-
-### Schemes  `/api/schemes/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| GET | `?search=&category=` | ✓ | Search/filter schemes |
-| GET | `<id>/` | ✓ | Scheme detail |
-
-### Videos  `/api/videos/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| GET | `?search=&category=` | ✓ | Search/filter videos |
-| GET | `favorites/` | ✓ | Favorited videos |
-| GET | `history/` | ✓ | Watch history |
-| POST | `<id>/favorite/` | ✓ | Toggle favorite |
-| POST | `<id>/watch/` | ✓ | Log a watch event |
-
-### Marketplace  `/api/marketplace/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| GET | `products/?search=&category=` | ✓ | Search/filter products |
-| GET | `products/<id>/` | ✓ | Product detail |
-| POST | `products/<id>/wishlist/` | ✓ | Toggle wishlist |
-| GET | `wishlist/` | ✓ | Wishlisted products |
-
-### Community  `/api/community/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| GET/POST | `posts/?search=&category=` | ✓ | List/create posts |
-| GET/PATCH/DELETE | `posts/<id>/` | ✓ | Detail (edit/delete: author only) |
-| GET/POST | `posts/<id>/comments/` | ✓ | List/add comments |
-| POST | `posts/<id>/like/` | ✓ | Toggle like |
-| POST | `posts/<id>/report/` | ✓ | Report for admin review |
-
-### Analytics  `/api/analytics/`
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| GET | `summary/` | admin only | Farmer counts, popular crops, feature usage |
-
----
-
-## How frontend connects to backend
-
-`src/services/api.js` is a single Axios instance (`baseURL: /api`, Vite proxies to Django). Request interceptor attaches `Authorization: Bearer <access>`. Response interceptor catches one 401, silently calls `/api/auth/refresh/`, retries the original request, and only redirects to `/login` if the refresh fails.
-
-All API error responses are shaped `{error: true, detail: "...", code: "..."}` by `config/exception_handler.py`. The frontend reads `err.response.data.detail` uniformly.
-
----
-
-## Demo credentials
-
-After running all seed commands:
-
-| Role | Email | Password |
-|---|---|---|
-| Admin | admin@example.com | AdminPass123! |
-| Farmer | _(register via /register)_ | _(your choice)_ |
-
----
-
-## Testing registration/login
-
-```bash
-# Register
-curl -X POST http://127.0.0.1:8000/api/auth/register/ \
-  -H "Content-Type: application/json" \
-  -d '{"username":"demo","email":"demo@example.com","phone_number":"9999999999","password":"StrongPass123!","password2":"StrongPass123!"}'
-
-# Or open http://localhost:5173/register in your browser
+```text
+http://localhost:5173/
 ```
 
 ---
 
-## Production checklist
+# 🔄 Application Flow
 
-- [ ] Set `DJANGO_SECRET_KEY` to a 50+ character random string
-- [ ] Set `DJANGO_DEBUG=False`
-- [ ] Set `DJANGO_ALLOWED_HOSTS` to your domain
-- [ ] Configure `DB_*` vars for MySQL
-- [ ] Set `CORS_ALLOWED_ORIGINS` to your frontend domain
-- [ ] Run `python manage.py collectstatic`
-- [ ] Put Django behind Nginx/Gunicorn
-- [ ] Serve React build (`npm run build` → `dist/`) via Nginx
-- [ ] Set `WEATHER_API_KEY` (OpenWeatherMap) for live weather
-- [ ] Set `AI_API_KEY` (Anthropic) for open-ended AI answers
-- [ ] Replace placeholder video/product entries via `/admin/`
-- [ ] Add real government scheme data via `/admin/`
+```text
+                 🌾 SMART KISAAN
+                       │
+                       ▼
+                ┌───────────────┐
+                │    Frontend   │
+                │   React.js    │
+                └───────┬───────┘
+                        │
+          ┌─────────────┼─────────────┐
+          ▼             ▼             ▼
+      🌱 Farming     📊 Market     🌦️ Weather
+      Assistance       Data
+          │             │             │
+          └─────────────┼─────────────┘
+                        ▼
+                ┌───────────────┐
+                │    Backend    │
+                │ Django + DRF  │
+                └───────┬───────┘
+                        │
+              ┌─────────┴─────────┐
+              ▼                   ▼
+        🗄️ Database           🤖 AI / ML
+```
 
 ---
 
-## ML models — current status
+# 🎯 Project Objective
 
-| Predictor | Status | Notes |
-|---|---|---|
-| `CropRecommendationPredictor` | ✅ Rule-based v1 | Transparent scoring over 7 crops; swappable for trained scikit-learn model |
-| `FertilizerRecommendationPredictor` | ✅ Rule-based v1 | NPK-gap analysis; swappable |
-| `DiseaseDetectionPredictor` | ⏳ Stub | Returns `NotImplementedError`; API says `status: unavailable` honestly — no fake diagnosis |
+The objective of Smart Kisaan is to develop a technology-assisted farming platform that brings useful agricultural services and information together in a single user-friendly application.
 
-To plug in a real trained model: implement `predict()` in the relevant `ml_models/<domain>/predictor.py` — Django views and frontend don't change.
+The project explores the practical use of:
+
+- Artificial Intelligence
+- Machine Learning
+- Full-Stack Development
+- REST APIs
+- Database Management
+- User Authentication
+- Web Technologies
 
 ---
 
-## Future improvements
+# 📚 Learning Outcomes
 
-- Real disease detection model (TensorFlow/PyTorch image classification, PlantVillage dataset or similar)
-- Email/SMS delivery for password reset and reminders (Phase 11 placeholders already in `PasswordResetRequestView`)
-- IoT sensor data ingestion architecture (per §37 — interfaces/architecture ready, no fake sensors)
-- PWA / offline support (§37)
-- Dark mode (§37)
-- Data export — farmer activity reports as CSV/PDF (§37)
-- Crop profitability comparison across crops (§37)
-- Smart Farm Health Score (§37)
-- Crop Risk Score based on weather + market trends (§37)
-- Real payment gateway integration for marketplace (architecture ready, payment flow is a clean addition)
-- Redis-backed rate limiting (throttle keys already in DRF settings — one-line activation)
-- Sentry/error monitoring integration (`ErrorBoundary.componentDidCatch` is the hook point)
+Through this project, the following technical areas were explored:
+
+- Full-stack web application development
+- React.js frontend development
+- Django backend development
+- REST API development
+- Database integration
+- AI/ML integration
+- Authentication
+- Git and GitHub
+- User interface development
+- Project documentation
+
+---
+
+# 🔮 Future Scope
+
+Possible future improvements include:
+
+- Larger agricultural datasets
+- Improved AI/ML models
+- More crop and disease categories
+- More regional-language support
+- Enhanced recommendations
+- Cloud deployment
+- Mobile application
+- Additional agricultural services
+
+---
+
+# 👩‍💻 Developer
+
+## Ankitha Kanneboina
+
+**B.Tech Computer Science and Engineering**
+
+### Areas of Interest
+
+- Artificial Intelligence & Machine Learning
+- Full-Stack Development
+- Software Engineering
+- Data Structures & Algorithms
+
+### 🔗 Connect
+
+**GitHub:**  
+https://github.com/ankithakanneboina
+
+**LinkedIn:**  
+https://www.linkedin.com/in/ankitha-kanneboina-45a545324/
+
+---
+
+# ⭐ Project
+
+If you find the project useful, consider giving the repository a ⭐.
+
+---
+
+## 📌 Note
+
+Smart Kisaan was developed as an academic and portfolio project to explore the practical application of AI/ML and full-stack technologies in the agriculture domain.
