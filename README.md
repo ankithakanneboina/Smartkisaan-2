@@ -174,7 +174,7 @@ The complete project demonstration shows the major features and workflow of the 
 
 ### 🎬 Watch the Demo
 
-**[▶️ Click Here to Watch Smart Kisaan Demo](YOUR_VIDEO_LINK_HERE)**
+**[▶️ Click Here to Watch Smart Kisaan Demo](https://youtu.be/o52ZcGyOv2E)**
 
 > The demo video is hosted externally instead of being stored directly in the repository because GitHub limits individual repository files to 100 MB.
 
