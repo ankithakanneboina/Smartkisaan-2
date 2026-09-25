@@ -162,7 +162,7 @@ The crop recommendation functionality provides farming-related recommendations b
 
 The disease detection functionality supports identification of plant-related disease conditions using the implemented AI/ML functionality.
 
-![Disease Detection](ScreenshotsP/Disease.png)
+![Disease Detection](ScreenshotsP/Dieases.png)
 
 ---
 
