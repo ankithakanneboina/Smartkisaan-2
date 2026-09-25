@@ -24,66 +24,6 @@ The platform brings together farming assistance, market information, weather inf
 - 🔐 **User Authentication**
 
 ---
-
-# 🛠️ Technologies Used
-
-### Frontend
-- React.js
-- JavaScript
-- HTML
-- CSS
-
-### Backend
-- Python
-- Django
-- Django REST Framework
-
-### Database
-- SQLite
-
-### AI / Machine Learning
-- Python
-- Machine Learning
-- AI-based agricultural assistance
-
-### Tools
-- Git
-- GitHub
-- REST APIs
-- VS Code
-
----
-
-# 📂 Project Structure
-
-```text
-SmartKisaan/
-│
-├── backend/
-│
-├── frontend/
-│
-├── ml_models/
-│
-├── ScreenshotsP/
-│   ├── home.png
-│   ├── market-data.png
-│   ├── account.png
-│   ├── community.png
-│   ├── videos.png
-│   ├── verified.png
-│   ├── weather.png
-│   ├── dashboard.png
-│   ├── crop-recommendation.png
-│   └── disease-detection.png
-│
-├── README.md
-│
-└── .gitignore
-```
-
----
-
 # 📸 Application Screenshots
 
 ## 🏠 Home
@@ -179,7 +119,6 @@ The complete project demonstration shows the major features and workflow of the 
 > The demo video is hosted externally instead of being stored directly in the repository because GitHub limits individual repository files to 100 MB.
 
 ---
-
 # 🚀 Main Modules
 
 ### 🌱 Farming Assistance
@@ -215,6 +154,68 @@ Provides user account-related functionality.
 Provides AI/ML-powered functionality implemented within the project.
 
 ---
+
+
+# 🛠️ Technologies Used
+
+### Frontend
+- React.js
+- JavaScript
+- HTML
+- CSS
+
+### Backend
+- Python
+- Django
+- Django REST Framework
+
+### Database
+- SQLite
+
+### AI / Machine Learning
+- Python
+- Machine Learning
+- AI-based agricultural assistance
+
+### Tools
+- Git
+- GitHub
+- REST APIs
+- VS Code
+
+---
+
+# 📂 Project Structure
+
+```text
+SmartKisaan/
+│
+├── backend/
+│
+├── frontend/
+│
+├── ml_models/
+│
+├── ScreenshotsP/
+│   ├── home.png
+│   ├── market-data.png
+│   ├── account.png
+│   ├── community.png
+│   ├── videos.png
+│   ├── verified.png
+│   ├── weather.png
+│   ├── dashboard.png
+│   ├── crop-recommendation.png
+│   └── disease-detection.png
+│
+├── README.md
+│
+└── .gitignore
+```
+
+---
+
+
 
 # ⚙️ Installation & Setup
 
